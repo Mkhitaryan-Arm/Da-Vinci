@@ -4,170 +4,387 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Հրավիրատոմս — Da Vinci</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: #F0E8D8;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    font-family: 'Lato', sans-serif;
-  }
-  .inv-wrap-outer { position: relative; max-width: 560px; width: 100%; }
-  .corner { position: absolute; width: 22px; height: 22px; border-color: #D4A853; border-style: solid; opacity: 0; transition: opacity 0.5s; }
-  .corner-tl { top: 6px; left: 6px; border-width: 1.5px 0 0 1.5px; }
-  .corner-tr { top: 6px; right: 6px; border-width: 1.5px 1.5px 0 0; }
-  .corner-bl { bottom: 6px; left: 6px; border-width: 0 0 1.5px 1.5px; }
-  .corner-br { bottom: 6px; right: 6px; border-width: 0 1.5px 1.5px 0; }
-  .inv-wrap {
-    background: #FDF8F2;
-    border: 1.5px solid #D4A853;
-    border-radius: 12px;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity 0.6s;
-  }
-  .inv-header { background: #F5E6C8; border-bottom: 1px solid #D4A853; padding: 28px 40px 20px; text-align: center; }
-  .tag { font-size: 11px; letter-spacing: 4px; color: #9B6F20; text-transform: uppercase; margin-bottom: 8px; opacity: 0; transition: opacity 0.5s; }
-  .rest-name { font-family: 'Playfair Display', serif; font-size: 44px; color: #7A4E0D; font-weight: 700; letter-spacing: 2px; line-height: 1.1; min-height: 54px; }
-  .rest-sub { font-size: 11px; letter-spacing: 6px; color: #B8892A; margin-top: 6px; font-weight: 300; opacity: 0; transition: opacity 0.5s; }
-  .ornament { display: flex; align-items: center; gap: 12px; margin: 16px 0 0; opacity: 0; transition: opacity 0.5s; }
-  .ornament .line { flex: 1; height: 0.5px; background: #D4A853; opacity: 0.5; }
-  .ornament .diamond { width: 7px; height: 7px; background: #D4A853; transform: rotate(45deg); flex-shrink: 0; }
-  .inv-body { padding: 24px 40px 32px; text-align: center; }
-  .greeting { font-size: 11px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; margin-bottom: 6px; opacity: 0; transition: opacity 0.5s; }
-  .teacher-name { font-family: 'Playfair Display', serif; font-size: 30px; color: #3D2600; font-style: italic; min-height: 40px; }
-  .ornament2 { display: flex; align-items: center; gap: 12px; margin: 14px 0; opacity: 0; transition: opacity 0.5s; }
-  .ornament2 .line { flex: 1; height: 0.5px; background: #D4A853; opacity: 0.5; }
-  .ornament2 .diamond { width: 7px; height: 7px; background: #D4A853; transform: rotate(45deg); flex-shrink: 0; }
-  .inv-text { font-size: 14px; color: #6B4F2A; line-height: 1.8; margin: 18px 0 24px; font-weight: 300; opacity: 0; transition: opacity 0.6s; }
-  .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; opacity: 0; transition: opacity 0.5s; }
-  .detail-box { background: #FFF8EC; border: 0.5px solid #D4A853; border-radius: 8px; padding: 14px 12px; text-align: center; }
-  .detail-label { font-size: 10px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; margin-bottom: 6px; }
-  .detail-value { font-family: 'Playfair Display', serif; font-size: 18px; color: #3D2600; font-weight: 700; }
-  .address-box { background: #FFF8EC; border: 0.5px solid #D4A853; border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; text-align: left; opacity: 0; transition: opacity 0.5s; }
-  .address-label { font-size: 10px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; display: block; margin-bottom: 3px; }
-  .address-value { font-family: 'Playfair Display', serif; font-size: 15px; color: #3D2600; }
-  .inv-footer { background: #FAF0DC; border-top: 0.5px solid #D4A853; padding: 18px 40px; text-align: center; opacity: 0; transition: opacity 0.5s; }
-  .footer-quote { font-family: 'Playfair Display', serif; font-size: 13px; color: #9B6F20; font-style: italic; }
-  .footer-from { font-size: 10px; letter-spacing: 3px; color: #B8892A; margin-top: 8px; text-transform: uppercase; }
-  .cursor { display: inline-block; width: 2px; background: #9B6F20; vertical-align: middle; margin-left: 1px; animation: blink 0.6s step-end infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dark: #8B6914;
+  --cream: #FDF8F2;
+  --cream-dark: #F5E6C8;
+  --cream-mid: #FAF0DC;
+  --brown-deep: #3D2600;
+  --brown-mid: #7A4E0D;
+  --brown-light: #9B6F20;
+  --brown-muted: #6B4F2A;
+  --bg: #EDE0CB;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 20px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* ── OUTER WRAPPER ── */
+.outer {
+  position: relative;
+  max-width: 580px;
+  width: 100%;
+}
+
+/* corner brackets */
+.corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--gold);
+  border-style: solid;
+  opacity: 0;
+}
+.c-tl { top:4px; left:4px;  border-width: 2px 0 0 2px; }
+.c-tr { top:4px; right:4px; border-width: 2px 2px 0 0; }
+.c-bl { bottom:4px; left:4px;  border-width: 0 0 2px 2px; }
+.c-br { bottom:4px; right:4px; border-width: 0 2px 2px 0; }
+
+/* ── CARD ── */
+.card {
+  background: var(--cream);
+  border: 1.5px solid var(--gold);
+  border-radius: 14px;
+  overflow: hidden;
+  opacity: 0;
+}
+
+/* ── HEADER ── */
+.hdr {
+  background: var(--cream-dark);
+  border-bottom: 1px solid var(--gold);
+  padding: 32px 48px 22px;
+  text-align: center;
+}
+
+.hdr-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  color: var(--brown-light);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  opacity: 0;
+}
+
+.hdr-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  color: var(--brown-mid);
+  font-weight: 700;
+  letter-spacing: 3px;
+  line-height: 1;
+  min-height: 58px;
+}
+
+.hdr-sub {
+  font-size: 11px;
+  letter-spacing: 7px;
+  color: #B8892A;
+  margin-top: 8px;
+  font-weight: 300;
+  opacity: 0;
+}
+
+/* ── DIVIDER ── */
+.div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+}
+.div .ln { flex: 1; height: 0.5px; background: var(--gold); opacity: 0.45; }
+.div .dm {
+  width: 7px; height: 7px;
+  background: var(--gold);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+  opacity: 0.75;
+}
+.div1 { margin: 18px 0 0; }
+
+/* ── BODY ── */
+.body {
+  padding: 28px 48px 36px;
+  text-align: center;
+}
+
+.greet {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--brown-light);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0;
+}
+
+.tname {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  color: var(--brown-deep);
+  font-style: italic;
+  min-height: 42px;
+}
+
+.div2 { margin: 16px 0; }
+
+.msg {
+  font-size: 14px;
+  color: var(--brown-muted);
+  line-height: 1.9;
+  font-weight: 300;
+  margin-bottom: 26px;
+  opacity: 0;
+}
+
+/* ── INFO GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+  opacity: 0;
+}
+
+.box {
+  background: #FFF8EC;
+  border: 0.5px solid var(--gold);
+  border-radius: 9px;
+  padding: 16px 12px;
+  text-align: center;
+}
+.box-lbl {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--brown-light);
+  text-transform: uppercase;
+  margin-bottom: 7px;
+}
+.box-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--brown-deep);
+  font-weight: 700;
+}
+
+/* ── ADDRESS ── */
+.addr {
+  background: #FFF8EC;
+  border: 0.5px solid var(--gold);
+  border-radius: 9px;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  opacity: 0;
+}
+.addr-ico { font-size: 22px; flex-shrink: 0; }
+.addr-lbl {
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--brown-light);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 3px;
+}
+.addr-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--brown-deep);
+}
+
+/* ── FOOTER ── */
+.ftr {
+  background: var(--cream-mid);
+  border-top: 0.5px solid var(--gold);
+  padding: 20px 48px;
+  text-align: center;
+  opacity: 0;
+}
+.ftr-q {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: var(--brown-light);
+  font-style: italic;
+}
+.ftr-from {
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: #B8892A;
+  margin-top: 9px;
+  text-transform: uppercase;
+}
+
+/* ── CURSOR ── */
+.cur {
+  display: inline-block;
+  width: 2px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink .65s step-end infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 </style>
 </head>
 <body>
-<div class="inv-wrap-outer">
-  <div class="corner corner-tl" id="c1"></div>
-  <div class="corner corner-tr" id="c2"></div>
-  <div class="corner corner-bl" id="c3"></div>
-  <div class="corner corner-br" id="c4"></div>
 
-  <div class="inv-wrap" id="card">
-    <div class="inv-header">
-      <div class="tag" id="tag">Հրավիրատոմս</div>
-      <div class="rest-name" id="restName"></div>
-      <div class="rest-sub" id="restSub">R E S T O R A N T</div>
-      <div class="ornament" id="orn1">
-        <div class="line"></div><div class="diamond"></div>
-        <div class="line"></div><div class="diamond"></div>
-        <div class="line"></div>
+<div class="outer">
+  <div class="corner c-tl" id="c1"></div>
+  <div class="corner c-tr" id="c2"></div>
+  <div class="corner c-bl" id="c3"></div>
+  <div class="corner c-br" id="c4"></div>
+
+  <div class="card" id="card">
+
+    <div class="hdr">
+      <div class="hdr-label" id="lbl">Հրավիրատոմս</div>
+      <div class="hdr-title" id="title"></div>
+      <div class="hdr-sub" id="sub">R &nbsp; E &nbsp; S &nbsp; T &nbsp; O &nbsp; R &nbsp; A &nbsp; N &nbsp; T</div>
+      <div class="div div1" id="d1">
+        <div class="ln"></div><div class="dm"></div>
+        <div class="ln"></div><div class="dm"></div>
+        <div class="ln"></div>
       </div>
     </div>
-    <div class="inv-body">
-      <div class="greeting" id="greeting">Հարգելի դասղե՛կ</div>
-      <div class="teacher-name" id="teacherName"></div>
-      <div class="ornament2" id="orn2">
-        <div class="line"></div><div class="diamond"></div><div class="line"></div>
+
+    <div class="body">
+      <div class="greet" id="greet">Հարգելի դասղե՛կ</div>
+      <div class="tname" id="tname"></div>
+      <div class="div div2" id="d2">
+        <div class="ln"></div><div class="dm"></div><div class="ln"></div>
       </div>
-      <p class="inv-text" id="invText">
+      <p class="msg" id="msg">
         Ձեզ հրավիրում ենք ճաշկերույթի՝<br>
         հարգանքի ու անկեղծ երախտագիտության<br>
         մեր սիրելի ուսուցչուհու պատվին։
       </p>
-      <div class="details-grid" id="details">
-        <div class="detail-box">
-          <div class="detail-label">📅 Ամսաթիվ</div>
-          <div class="detail-value">24 / 05 / 2026</div>
+      <div class="grid" id="grid">
+        <div class="box">
+          <div class="box-lbl">📅 &nbsp;Ամսաթիվ</div>
+          <div class="box-val">24 / 05 / 2026</div>
         </div>
-        <div class="detail-box">
-          <div class="detail-label">🕔 Ժամը</div>
-          <div class="detail-value">17 : 00</div>
+        <div class="box">
+          <div class="box-lbl">🕔 &nbsp;Ժամը</div>
+          <div class="box-val">17 : 00</div>
         </div>
       </div>
-      <div class="address-box" id="addr">
-        <span style="font-size:20px;color:#B8892A">📍</span>
+      <div class="addr" id="addr">
+        <span class="addr-ico">📍</span>
         <div>
-          <span class="address-label">Հասցե</span>
-          <span class="address-value">«Da Vinci» ռեստորան, Երևան</span>
+          <span class="addr-lbl">Հասցե</span>
+          <span class="addr-val">«Da Vinci» ռեստորան, Երևան</span>
         </div>
       </div>
     </div>
-    <div class="inv-footer" id="footer">
-      <div class="footer-quote">«Ձեր ներկայությունը մեր ամենամեծ ուրախությունն է»</div>
-      <div class="footer-from">— Ձեր սաները —</div>
+
+    <div class="ftr" id="ftr">
+      <div class="ftr-q">«Ձեր ներկայությունը մեր ամենամեծ ուրախությունն է»</div>
+      <div class="ftr-from">— Ձեր սաները —</div>
     </div>
+
   </div>
 </div>
 
 <script>
-function show(id, delay) {
-  setTimeout(function() {
-    var el = document.getElementById(id);
-    if (el) el.style.opacity = 1;
-  }, delay);
-}
+(function() {
 
-function typeText(el, text, delay, speed, cursorHeight, done) {
-  var cursor = document.createElement('span');
-  cursor.className = 'cursor';
-  cursor.style.height = cursorHeight;
-  el.appendChild(cursor);
+  // fade in helper — sets opacity to 1 after a delay (ms)
+  function fade(id, delay) {
+    setTimeout(function() {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.style.transition = 'opacity 600ms ease';
+      el.style.opacity    = '1';
+    }, delay);
+  }
 
-  var i = 0;
-  setTimeout(function() {
-    var iv = setInterval(function() {
-      if (i < text.length) {
-        cursor.insertAdjacentText('beforebegin', text[i]);
-        i++;
+  // typewriter: appends characters one by one into `el`, with a blinking cursor
+  // returns nothing; calls `done` callback when finished
+  function type(el, text, startDelay, charDelay, cursorPx, done) {
+    var cur = document.createElement('span');
+    cur.className = 'cur';
+    cur.style.height = cursorPx + 'px';
+    el.appendChild(cur);
+
+    var idx = 0;
+    setTimeout(function go() {
+      if (idx < text.length) {
+        // insert next character before the cursor span
+        cur.parentNode.insertBefore(document.createTextNode(text[idx]), cur);
+        idx++;
+        setTimeout(go, charDelay);
       } else {
-        clearInterval(iv);
-        cursor.remove();
-        if (done) done();
+        // done — remove cursor and fire callback
+        cur.parentNode.removeChild(cur);
+        if (typeof done === 'function') done();
       }
-    }, speed);
-  }, delay);
-}
+    }, startDelay);
+  }
 
-// corners
-setTimeout(function(){ document.getElementById('c1').style.opacity=0.6; }, 100);
-setTimeout(function(){ document.getElementById('c2').style.opacity=0.6; }, 200);
-setTimeout(function(){ document.getElementById('c3').style.opacity=0.6; }, 300);
-setTimeout(function(){ document.getElementById('c4').style.opacity=0.6; }, 400);
+  // ── SEQUENCE ──────────────────────────────────────────
 
-// card
-show('card', 300);
+  // 1. Corner brackets slide in one by one
+  setTimeout(function(){ document.getElementById('c1').style.transition='opacity .4s'; document.getElementById('c1').style.opacity='.6'; }, 150);
+  setTimeout(function(){ document.getElementById('c2').style.transition='opacity .4s'; document.getElementById('c2').style.opacity='.6'; }, 280);
+  setTimeout(function(){ document.getElementById('c3').style.transition='opacity .4s'; document.getElementById('c3').style.opacity='.6'; }, 410);
+  setTimeout(function(){ document.getElementById('c4').style.transition='opacity .4s'; document.getElementById('c4').style.opacity='.6'; }, 540);
 
-// tag
-show('tag', 600);
+  // 2. Card appears
+  setTimeout(function(){
+    var c = document.getElementById('card');
+    c.style.transition = 'opacity .7s ease';
+    c.style.opacity = '1';
+  }, 400);
 
-// Da Vinci typewriter
-typeText(document.getElementById('restName'), 'Da Vinci', 900, 90, '38px', function() {
-  show('restSub', 100);
-  show('orn1', 300);
-  show('greeting', 600);
+  // 3. "Հրավիրատոմս" label
+  fade('lbl', 750);
 
-  // teacher name typewriter
-  typeText(document.getElementById('teacherName'), 'Նուշիկ Մեհրաբյան', 700, 65, '28px', function() {
-    show('orn2', 200);
-    show('invText', 500);
-    show('details', 900);
-    show('addr', 1200);
-    show('footer', 1600);
+  // 4. "Da Vinci" typed
+  type(document.getElementById('title'), 'Da Vinci', 1050, 85, 44, function() {
+
+    // 5. Subtitle + ornament
+    fade('sub', 100);
+    fade('d1',  350);
+
+    // 6. Greeting label
+    fade('greet', 600);
+
+    // 7. Teacher name typed
+    type(document.getElementById('tname'), 'Նուշիկ Մեհրաբյան', 750, 60, 30, function() {
+
+      // 8. Second divider
+      fade('d2', 150);
+
+      // 9. Body text paragraph
+      fade('msg', 400);
+
+      // 10. Date / time grid
+      fade('grid', 850);
+
+      // 11. Address
+      fade('addr', 1200);
+
+      // 12. Footer
+      fade('ftr', 1650);
+    });
   });
-});
+
+})();
 </script>
 </body>
 </html>
