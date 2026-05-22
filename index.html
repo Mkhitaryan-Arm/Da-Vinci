@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Հրավիրատոմս — Da Vinci</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #F0E8D8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Lato', sans-serif;
+  }
+  .inv-wrap-outer {
+    position: relative;
+    max-width: 560px;
+    width: 100%;
+  }
+  .corner { position: absolute; width: 22px; height: 22px; border-color: #D4A853; border-style: solid; opacity: 0.6; }
+  .corner-tl { top: 6px; left: 6px; border-width: 1.5px 0 0 1.5px; }
+  .corner-tr { top: 6px; right: 6px; border-width: 1.5px 1.5px 0 0; }
+  .corner-bl { bottom: 6px; left: 6px; border-width: 0 0 1.5px 1.5px; }
+  .corner-br { bottom: 6px; right: 6px; border-width: 0 1.5px 1.5px 0; }
+  .inv-wrap {
+    background: #FDF8F2;
+    border: 1.5px solid #D4A853;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .inv-header {
+    background: #F5E6C8;
+    border-bottom: 1px solid #D4A853;
+    padding: 28px 40px 20px;
+    text-align: center;
+  }
+  .tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #9B6F20;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .rest-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 44px;
+    color: #7A4E0D;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.1;
+  }
+  .rest-sub {
+    font-size: 11px;
+    letter-spacing: 6px;
+    color: #B8892A;
+    margin-top: 6px;
+    font-weight: 300;
+  }
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0 0;
+  }
+  .ornament .line { flex: 1; height: 0.5px; background: #D4A853; opacity: 0.5; }
+  .ornament .diamond { width: 7px; height: 7px; background: #D4A853; transform: rotate(45deg); opacity: 0.7; flex-shrink: 0; }
+  .inv-body { padding: 24px 40px 32px; text-align: center; }
+  .greeting { font-size: 11px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; margin-bottom: 6px; }
+  .teacher-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    color: #3D2600;
+    font-style: italic;
+  }
+  .inv-text {
+    font-size: 14px;
+    color: #6B4F2A;
+    line-height: 1.8;
+    margin: 18px 0 24px;
+    font-weight: 300;
+  }
+  .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .detail-box {
+    background: #FFF8EC;
+    border: 0.5px solid #D4A853;
+    border-radius: 8px;
+    padding: 14px 12px;
+    text-align: center;
+  }
+  .detail-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #9B7340;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .detail-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #3D2600;
+    font-weight: 700;
+  }
+  .address-box {
+    background: #FFF8EC;
+    border: 0.5px solid #D4A853;
+    border-radius: 8px;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+  }
+  .address-icon { font-size: 20px; color: #B8892A; }
+  .address-label { font-size: 10px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; display: block; margin-bottom: 3px; }
+  .address-value { font-family: 'Playfair Display', serif; font-size: 15px; color: #3D2600; }
+  .inv-footer {
+    background: #FAF0DC;
+    border-top: 0.5px solid #D4A853;
+    padding: 18px 40px;
+    text-align: center;
+  }
+  .footer-quote { font-family: 'Playfair Display', serif; font-size: 13px; color: #9B6F20; font-style: italic; }
+  .footer-from { font-size: 10px; letter-spacing: 3px; color: #B8892A; margin-top: 8px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="inv-wrap-outer">
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="inv-wrap">
+    <div class="inv-header">
+      <div class="tag">Հրավիրատոմս</div>
+      <div class="rest-name">Da Vinci</div>
+      <div class="rest-sub">R E S T O R A N T</div>
+      <div class="ornament">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+
+    <div class="inv-body">
+      <div class="greeting">Հարգելի դասղե՛կ</div>
+      <div class="teacher-name">Նուշիկ Մեհրաբյան</div>
+
+      <div class="ornament" style="margin: 14px 0;">
+        <div class="line"></div>
+        <div class="diamond"></div>
+        <div class="line"></div>
+      </div>
+
+      <p class="inv-text">
+        Ձեզ հրավիրում ենք ճաշկերույթի՝<br>
+        հարգանքի ու անկեղծ երախտագիտության<br>
+        մեր սիրելի ուսուցչուհու պատվին։
+      </p>
+
+      <div class="details-grid">
+        <div class="detail-box">
+          <div class="detail-label">📅 Ամսաթիվ</div>
+          <div class="detail-value">24 / 05 / 2026</div>
+        </div>
+        <div class="detail-box">
+          <div class="detail-label">🕔 Ժամը</div>
+          <div class="detail-value">17 : 00</div>
+        </div>
+      </div>
+
+      <div class="address-box">
+        <span class="address-icon">📍</span>
+        <div>
+          <span class="address-label">Հասցե</span>
+          <span class="address-value">«Da Vinci» ռեստորան, Երևան</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="inv-footer">
+      <div class="footer-quote">«Ձեր ներկայությունը մեր ամենամեծ ուրախությունն է»</div>
+      <div class="footer-from">— Ձեր սաները —</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
