@@ -16,172 +16,59 @@
     padding: 40px 20px;
     font-family: 'Lato', sans-serif;
   }
-
-  .inv-wrap-outer {
-    position: relative;
-    max-width: 560px;
-    width: 100%;
-  }
-
-  .corner { position: absolute; width: 22px; height: 22px; border-color: #D4A853; border-style: solid; opacity: 0; }
+  .inv-wrap-outer { position: relative; max-width: 560px; width: 100%; }
+  .corner { position: absolute; width: 22px; height: 22px; border-color: #D4A853; border-style: solid; opacity: 0; transition: opacity 0.5s; }
   .corner-tl { top: 6px; left: 6px; border-width: 1.5px 0 0 1.5px; }
   .corner-tr { top: 6px; right: 6px; border-width: 1.5px 1.5px 0 0; }
   .corner-bl { bottom: 6px; left: 6px; border-width: 0 0 1.5px 1.5px; }
   .corner-br { bottom: 6px; right: 6px; border-width: 0 1.5px 1.5px 0; }
-
   .inv-wrap {
     background: #FDF8F2;
     border: 1.5px solid #D4A853;
     border-radius: 12px;
     overflow: hidden;
     opacity: 0;
+    transition: opacity 0.6s;
   }
-
-  .inv-header {
-    background: #F5E6C8;
-    border-bottom: 1px solid #D4A853;
-    padding: 28px 40px 20px;
-    text-align: center;
-  }
-
-  .tag {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: #9B6F20;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    opacity: 0;
-  }
-  .rest-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 44px;
-    color: #7A4E0D;
-    font-weight: 700;
-    letter-spacing: 2px;
-    line-height: 1.1;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .rest-name-inner {
-    display: inline-block;
-    clip-path: inset(0 100% 0 0);
-  }
-  .rest-sub {
-    font-size: 11px;
-    letter-spacing: 6px;
-    color: #B8892A;
-    margin-top: 6px;
-    font-weight: 300;
-    opacity: 0;
-  }
-  .ornament {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 16px 0 0;
-    opacity: 0;
-  }
+  .inv-header { background: #F5E6C8; border-bottom: 1px solid #D4A853; padding: 28px 40px 20px; text-align: center; }
+  .tag { font-size: 11px; letter-spacing: 4px; color: #9B6F20; text-transform: uppercase; margin-bottom: 8px; opacity: 0; transition: opacity 0.5s; }
+  .rest-name { font-family: 'Playfair Display', serif; font-size: 44px; color: #7A4E0D; font-weight: 700; letter-spacing: 2px; line-height: 1.1; min-height: 54px; }
+  .rest-sub { font-size: 11px; letter-spacing: 6px; color: #B8892A; margin-top: 6px; font-weight: 300; opacity: 0; transition: opacity 0.5s; }
+  .ornament { display: flex; align-items: center; gap: 12px; margin: 16px 0 0; opacity: 0; transition: opacity 0.5s; }
   .ornament .line { flex: 1; height: 0.5px; background: #D4A853; opacity: 0.5; }
-  .ornament .diamond { width: 7px; height: 7px; background: #D4A853; transform: rotate(45deg); opacity: 0.7; flex-shrink: 0; }
-
+  .ornament .diamond { width: 7px; height: 7px; background: #D4A853; transform: rotate(45deg); flex-shrink: 0; }
   .inv-body { padding: 24px 40px 32px; text-align: center; }
-
-  .greeting {
-    font-size: 11px;
-    letter-spacing: 3px;
-    color: #9B7340;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-    opacity: 0;
-  }
-
-  .teacher-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    color: #3D2600;
-    font-style: italic;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .teacher-name-inner {
-    display: inline-block;
-    clip-path: inset(0 100% 0 0);
-  }
-
-  .ornament2 { display: flex; align-items: center; gap: 12px; margin: 14px 0; opacity: 0; }
+  .greeting { font-size: 11px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; margin-bottom: 6px; opacity: 0; transition: opacity 0.5s; }
+  .teacher-name { font-family: 'Playfair Display', serif; font-size: 30px; color: #3D2600; font-style: italic; min-height: 40px; }
+  .ornament2 { display: flex; align-items: center; gap: 12px; margin: 14px 0; opacity: 0; transition: opacity 0.5s; }
   .ornament2 .line { flex: 1; height: 0.5px; background: #D4A853; opacity: 0.5; }
-  .ornament2 .diamond { width: 7px; height: 7px; background: #D4A853; transform: rotate(45deg); opacity: 0.7; flex-shrink: 0; }
-
-  .inv-text {
-    font-size: 14px;
-    color: #6B4F2A;
-    line-height: 1.8;
-    margin: 18px 0 24px;
-    font-weight: 300;
-    opacity: 0;
-  }
-
-  .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; opacity: 0; }
-  .detail-box {
-    background: #FFF8EC;
-    border: 0.5px solid #D4A853;
-    border-radius: 8px;
-    padding: 14px 12px;
-    text-align: center;
-  }
+  .ornament2 .diamond { width: 7px; height: 7px; background: #D4A853; transform: rotate(45deg); flex-shrink: 0; }
+  .inv-text { font-size: 14px; color: #6B4F2A; line-height: 1.8; margin: 18px 0 24px; font-weight: 300; opacity: 0; transition: opacity 0.6s; }
+  .details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; opacity: 0; transition: opacity 0.5s; }
+  .detail-box { background: #FFF8EC; border: 0.5px solid #D4A853; border-radius: 8px; padding: 14px 12px; text-align: center; }
   .detail-label { font-size: 10px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; margin-bottom: 6px; }
   .detail-value { font-family: 'Playfair Display', serif; font-size: 18px; color: #3D2600; font-weight: 700; }
-
-  .address-box {
-    background: #FFF8EC;
-    border: 0.5px solid #D4A853;
-    border-radius: 8px;
-    padding: 14px 18px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-align: left;
-    opacity: 0;
-  }
-  .address-icon { font-size: 20px; color: #B8892A; }
+  .address-box { background: #FFF8EC; border: 0.5px solid #D4A853; border-radius: 8px; padding: 14px 18px; display: flex; align-items: center; gap: 12px; text-align: left; opacity: 0; transition: opacity 0.5s; }
   .address-label { font-size: 10px; letter-spacing: 3px; color: #9B7340; text-transform: uppercase; display: block; margin-bottom: 3px; }
   .address-value { font-family: 'Playfair Display', serif; font-size: 15px; color: #3D2600; }
-
-  .inv-footer {
-    background: #FAF0DC;
-    border-top: 0.5px solid #D4A853;
-    padding: 18px 40px;
-    text-align: center;
-    opacity: 0;
-  }
+  .inv-footer { background: #FAF0DC; border-top: 0.5px solid #D4A853; padding: 18px 40px; text-align: center; opacity: 0; transition: opacity 0.5s; }
   .footer-quote { font-family: 'Playfair Display', serif; font-size: 13px; color: #9B6F20; font-style: italic; }
   .footer-from { font-size: 10px; letter-spacing: 3px; color: #B8892A; margin-top: 8px; text-transform: uppercase; }
-
-  /* cursor blink for typewriter */
-  .cursor {
-    display: inline-block;
-    width: 2px;
-    height: 1em;
-    background: #9B6F20;
-    vertical-align: middle;
-    margin-left: 2px;
-    animation: blink 0.7s step-end infinite;
-  }
+  .cursor { display: inline-block; width: 2px; background: #9B6F20; vertical-align: middle; margin-left: 1px; animation: blink 0.6s step-end infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 </style>
 </head>
 <body>
-
 <div class="inv-wrap-outer">
-  <div class="corner corner-tl"></div>
-  <div class="corner corner-tr"></div>
-  <div class="corner corner-bl"></div>
-  <div class="corner corner-br"></div>
+  <div class="corner corner-tl" id="c1"></div>
+  <div class="corner corner-tr" id="c2"></div>
+  <div class="corner corner-bl" id="c3"></div>
+  <div class="corner corner-br" id="c4"></div>
 
   <div class="inv-wrap" id="card">
     <div class="inv-header">
       <div class="tag" id="tag">Հրավիրատոմս</div>
-      <div class="rest-name"><span class="rest-name-inner" id="restName"></span><span class="cursor" id="cursor1"></span></div>
+      <div class="rest-name" id="restName"></div>
       <div class="rest-sub" id="restSub">R E S T O R A N T</div>
       <div class="ornament" id="orn1">
         <div class="line"></div><div class="diamond"></div>
@@ -189,10 +76,9 @@
         <div class="line"></div>
       </div>
     </div>
-
     <div class="inv-body">
       <div class="greeting" id="greeting">Հարգելի դասղե՛կ</div>
-      <div class="teacher-name"><span class="teacher-name-inner" id="teacherName"></span><span class="cursor" id="cursor2" style="display:none"></span></div>
+      <div class="teacher-name" id="teacherName"></div>
       <div class="ornament2" id="orn2">
         <div class="line"></div><div class="diamond"></div><div class="line"></div>
       </div>
@@ -201,7 +87,7 @@
         հարգանքի ու անկեղծ երախտագիտության<br>
         մեր սիրելի ուսուցչուհու պատվին։
       </p>
-      <div class="details-grid" id="detailsGrid">
+      <div class="details-grid" id="details">
         <div class="detail-box">
           <div class="detail-label">📅 Ամսաթիվ</div>
           <div class="detail-value">24 / 05 / 2026</div>
@@ -211,15 +97,14 @@
           <div class="detail-value">17 : 00</div>
         </div>
       </div>
-      <div class="address-box" id="addressBox">
-        <span class="address-icon">📍</span>
+      <div class="address-box" id="addr">
+        <span style="font-size:20px;color:#B8892A">📍</span>
         <div>
           <span class="address-label">Հասցե</span>
           <span class="address-value">«Da Vinci» ռեստորան, Երևան</span>
         </div>
       </div>
     </div>
-
     <div class="inv-footer" id="footer">
       <div class="footer-quote">«Ձեր ներկայությունը մեր ամենամեծ ուրախությունն է»</div>
       <div class="footer-from">— Ձեր սաները —</div>
@@ -228,70 +113,61 @@
 </div>
 
 <script>
-  function fadeIn(el, duration, delay) {
-    setTimeout(() => {
-      el.style.transition = `opacity ${duration}ms ease`;
-      el.style.opacity = 1;
-    }, delay);
-  }
+function show(id, delay) {
+  setTimeout(function() {
+    var el = document.getElementById(id);
+    if (el) el.style.opacity = 1;
+  }, delay);
+}
 
-  function typeWriter(spanEl, text, startDelay, speed, onDone) {
-    let i = 0;
-    spanEl.style.clipPath = 'inset(0 100% 0 0)';
-    setTimeout(() => {
-      const interval = setInterval(() => {
+function typeText(el, text, delay, speed, cursorHeight, done) {
+  var cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  cursor.style.height = cursorHeight;
+  el.appendChild(cursor);
+
+  var i = 0;
+  setTimeout(function() {
+    var iv = setInterval(function() {
+      if (i < text.length) {
+        cursor.insertAdjacentText('beforebegin', text[i]);
         i++;
-        const pct = Math.round((i / text.length) * 100);
-        spanEl.textContent = text.slice(0, i);
-        spanEl.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-        if (i >= text.length) {
-          clearInterval(interval);
-          if (onDone) onDone();
-        }
-      }, speed);
-    }, startDelay);
-  }
+      } else {
+        clearInterval(iv);
+        cursor.remove();
+        if (done) done();
+      }
+    }, speed);
+  }, delay);
+}
 
-  // corners
-  document.querySelectorAll('.corner').forEach((c, i) => {
-    setTimeout(() => {
-      c.style.transition = 'opacity 400ms ease';
-      c.style.opacity = 0.6;
-    }, i * 80);
-  });
+// corners
+setTimeout(function(){ document.getElementById('c1').style.opacity=0.6; }, 100);
+setTimeout(function(){ document.getElementById('c2').style.opacity=0.6; }, 200);
+setTimeout(function(){ document.getElementById('c3').style.opacity=0.6; }, 300);
+setTimeout(function(){ document.getElementById('c4').style.opacity=0.6; }, 400);
 
-  // card fade in
-  fadeIn(document.getElementById('card'), 500, 200);
+// card
+show('card', 300);
 
-  // tag
-  fadeIn(document.getElementById('tag'), 400, 500);
+// tag
+show('tag', 600);
 
-  // "Da Vinci" typewriter
-  const cursor1 = document.getElementById('cursor1');
-  typeWriter(document.getElementById('restName'), 'Da Vinci', 900, 80, () => {
-    cursor1.style.display = 'none';
-  });
-
-  // subtitle
-  fadeIn(document.getElementById('restSub'), 400, 1800);
-  fadeIn(document.getElementById('orn1'), 400, 2100);
-
-  // greeting
-  fadeIn(document.getElementById('greeting'), 400, 2400);
+// Da Vinci typewriter
+typeText(document.getElementById('restName'), 'Da Vinci', 900, 90, '38px', function() {
+  show('restSub', 100);
+  show('orn1', 300);
+  show('greeting', 600);
 
   // teacher name typewriter
-  const cursor2 = document.getElementById('cursor2');
-  setTimeout(() => { cursor2.style.display = 'inline-block'; }, 2700);
-  typeWriter(document.getElementById('teacherName'), 'Նուշիկ Մեհրաբյան', 2700, 60, () => {
-    cursor2.style.display = 'none';
+  typeText(document.getElementById('teacherName'), 'Նուշիկ Մեհրաբյան', 700, 65, '28px', function() {
+    show('orn2', 200);
+    show('invText', 500);
+    show('details', 900);
+    show('addr', 1200);
+    show('footer', 1600);
   });
-
-  // rest of elements
-  fadeIn(document.getElementById('orn2'), 400, 3900);
-  fadeIn(document.getElementById('invText'), 600, 4200);
-  fadeIn(document.getElementById('detailsGrid'), 500, 4700);
-  fadeIn(document.getElementById('addressBox'), 500, 5100);
-  fadeIn(document.getElementById('footer'), 500, 5500);
+});
 </script>
 </body>
 </html>
